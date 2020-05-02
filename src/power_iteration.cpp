@@ -2,13 +2,12 @@
 #include <time.h>
 #include <cstdio>
 #include <stdio.h>
+#include "matrix.hpp"
+
 #define N (long)100000
 #define EPS 1e-13
+
 void power_iteration(float *x, float *matrix, int length, float *y, float &lambda);
-void matmul(float *matrix, float *x, int length, float *y);
-float dotProduct(const float *x, const float *y, int length);
-float norm(const float *x, int length);
-void normalize(float *x, int length);
 
 int main()
 {
@@ -90,51 +89,5 @@ void power_iteration(float *x, float *matrix, int length, float *y, float &lambd
             epochs++;
             printf("epoch %d: lambda = %.6e\n", epochs, lambda1);
         }
-    }
-}
-
-//行列xベクトル
-void matmul(float *matrix, float *x, int length, float *y)
-{
-
-    for (int i = 0; i < N; ++i)
-    {
-        y[i] = 0;
-        for (int j = 0; j < N; ++j)
-        {
-            y[i] += matrix[N * i + j] * x[j];
-        }
-    }
-}
-
-//内積を求める
-float dotProduct(const float *x, const float *y, int length)
-{
-    float result = 0;
-    for (int i = 0; i < length; ++i)
-    {
-        result += x[i] * y[i];
-    }
-    return result;
-}
-
-//ベクトルのノルムを計算する
-float norm(const float *x, int length)
-{
-    float norm = 0;
-    for (int i = 0; i < length; ++i)
-    {
-        norm += x[i] * x[i];
-    }
-    return sqrt(norm);
-}
-
-//ベクトルを正規化する
-void normalize(float *x, int length)
-{
-    float n = norm(x, length);
-    for (int i = 0; i < length; ++i)
-    {
-        x[i] /= n;
     }
 }
