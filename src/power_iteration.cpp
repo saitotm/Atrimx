@@ -7,8 +7,6 @@
 #define N (long)100000
 #define EPS 1e-13
 
-void power_iteration(float *x, float *matrix, int length, float *y, float &lambda);
-
 int main()
 {
     float *x = new float[N];
