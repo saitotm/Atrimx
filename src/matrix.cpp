@@ -1,3 +1,4 @@
+#include <math.h>
 #include "matrix.hpp"
 //行列xベクトル
 void matmul(float *matrix, float *x, int length, float *y)
