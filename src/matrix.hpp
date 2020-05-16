@@ -34,16 +34,14 @@ namespace Atrimx
             std::string result = "[";
             for (int i = 0; i < rows(); ++i)
             {
-                if (i > 0)
-                    result += " ";
-                for (int j = 0; j < cols(); ++j)
+                result += std::to_string(operator()(i, 0));
+                for (int j = 1; j < cols(); ++j)
                 {
+                    result += ", ";
                     result += std::to_string(operator()(i, j));
-                    if (i < rows() - 1 || j < cols() - 1)
-                        result += ", ";
                 }
                 if (i < rows() - 1)
-                    result += "\n";
+                    result += ", \n ";
             }
 
             result += "]";
