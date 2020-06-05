@@ -18,10 +18,17 @@ namespace Atrimx
         inline int cols() const { return derived().cols(); }
 
         template <typename OtherDerived>
-        const Add<Scalar, Derived, OtherDerived>
+        inline const Add<Scalar, Derived, OtherDerived>
         operator+(const MatrixBase<OtherDerived> &other) const
         {
             return Add<Scalar, Derived, OtherDerived>(derived(), other.derived());
+        }
+
+        template <typename OtherDerived>
+        inline const Sub<Scalar, Derived, OtherDerived>
+        operator-(const MatrixBase<OtherDerived> &other) const
+        {
+            return Sub<Scalar, Derived, OtherDerived>(derived(), other.derived());
         }
 
         template <typename OtherDerived>
