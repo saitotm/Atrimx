@@ -29,7 +29,7 @@ namespace Atrimx
         inline _Scalar &operator()(int x, int y) { return data_[cols() * x + y]; }
 
         // 行列の文字列表現を返す
-        std::string toString()
+        std::string toString() const
         {
             std::string result = "[";
             for (int i = 0; i < rows(); ++i)
@@ -53,6 +53,12 @@ namespace Atrimx
             return MatrixBase<Matrix<_Scalar, _Rows, _Cols>>::operator=(other.derived());
         }
     };
+
+    template <typename _Scalar, int _Rows, int _Cols>
+    std::ostream &operator<<(std::ostream &os, const Matrix<_Scalar, _Rows, _Cols> &m)
+    {
+        return os << m.toString();
+    }
 
 } // namespace Atrimx
 
