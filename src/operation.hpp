@@ -13,6 +13,7 @@ namespace Atrimx
             typedef _Scalar Scalar;
         };
     } // namespace internal
+
     template <typename _Scalar, typename _LhsType, typename _RhsType>
     class Add : public MatrixBase<Add<_Scalar, _LhsType, _RhsType>>
     {
@@ -22,10 +23,12 @@ namespace Atrimx
 
     public:
         Add(const _LhsType &lhs, const _RhsType &rhs) : _lhs(lhs), _rhs(rhs){};
-        _Scalar operator()(int x, int y) const { return _lhs(x, y) + _rhs(x, y); }
+        inline _Scalar operator()(int x, int y) const { return _lhs(x, y) + _rhs(x, y); }
         //_Scalar &operator()(int x, int y) { return _lhs(x, y) + _rhs(x, y); }
     };
 
+    //template <typename _Scalar, type
+    //class Unary : public MatrixBase<_Scalar, >
 } // namespace Atrimx
 
 #endif

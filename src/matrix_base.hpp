@@ -10,12 +10,12 @@ namespace Atrimx
     public:
         typedef typename internal::traits<Derived>::Scalar Scalar;
 
-        Derived &derived() { return *static_cast<Derived *const>(this); }
-        const Derived &derived() const { return *static_cast<const Derived *const>(this); }
-        Scalar operator()(int x, int y) const { return derived().operator()(x, y); }
-        Scalar &operator()(int x, int y) { return derived().operator()(x, y); }
-        int rows() const { return derived().rows(); }
-        int cols() const { return derived().cols(); }
+        inline Derived &derived() { return *static_cast<Derived *const>(this); }
+        inline const Derived &derived() const { return *static_cast<const Derived *const>(this); }
+        inline Scalar operator()(int x, int y) const { return derived().operator()(x, y); }
+        inline Scalar &operator()(int x, int y) { return derived().operator()(x, y); }
+        inline int rows() const { return derived().rows(); }
+        inline int cols() const { return derived().cols(); }
 
         template <typename OtherDerived>
         const Add<Scalar, Derived, OtherDerived>
