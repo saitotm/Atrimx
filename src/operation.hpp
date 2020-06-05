@@ -18,13 +18,13 @@ namespace Atrimx
     class Add : public MatrixBase<Add<_Scalar, _LhsType, _RhsType>>
     {
     private:
-        _LhsType _lhs;
-        _RhsType _rhs;
+        _LhsType lhs_;
+        _RhsType rhs_;
 
     public:
-        Add(const _LhsType &lhs, const _RhsType &rhs) : _lhs(lhs), _rhs(rhs){};
-        inline _Scalar operator()(int x, int y) const { return _lhs(x, y) + _rhs(x, y); }
-        //_Scalar &operator()(int x, int y) { return _lhs(x, y) + _rhs(x, y); }
+        Add(const _LhsType &lhs, const _RhsType &rhs) : lhs_(lhs), rhs_(rhs){};
+        inline _Scalar operator()(int x, int y) const { return lhs_(x, y) + rhs_(x, y); }
+        //_Scalar &operator()(int x, int y) { return lhs_(x, y) + rhs_(x, y); }
     };
 
     //template <typename _Scalar, type
