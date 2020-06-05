@@ -23,10 +23,10 @@ namespace Atrimx
 
     public:
         Matrix() { _data = new _Scalar[_Rows * _Cols]; }
-        int rows() const { return _Rows; }
-        int cols() const { return _Cols; }
-        _Scalar operator()(int x, int y) const { return _data[cols() * x + y]; }
-        _Scalar &operator()(int x, int y) { return _data[cols() * x + y]; }
+        inline int rows() const { return _Rows; }
+        inline int cols() const { return _Cols; }
+        inline _Scalar operator()(int x, int y) const { return _data[cols() * x + y]; }
+        inline _Scalar &operator()(int x, int y) { return _data[cols() * x + y]; }
 
         // 行列の文字列表現を返す
         std::string toString()
@@ -34,16 +34,15 @@ namespace Atrimx
             std::string result = "[";
             for (int i = 0; i < rows(); ++i)
             {
-                result += std::to_string(operator()(i, 0));
-                for (int j = 1; j < cols(); ++j)
+                for (int j = 0; j < cols(); ++j)
                 {
-                    result += ", ";
                     result += std::to_string(operator()(i, j));
+                    result += ", ";
                 }
-                if (i < rows() - 1)
-                    result += ", \n ";
+                result += "\n ";
             }
-
+            // 末尾の", \n"の削除
+            result.erase(result.end() - 4, result.end());
             result += "]";
             return result;
         }
