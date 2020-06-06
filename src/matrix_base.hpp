@@ -31,6 +31,13 @@ namespace Atrimx
             return Sub<Scalar, Derived, OtherDerived>(derived(), other.derived());
         }
 
+        template <typename OtherDerived>
+        inline const ProductMatrix<Scalar, Derived, OtherDerived>
+        operator*(const MatrixBase<OtherDerived> &other) const
+        {
+            return ProductMatrix<Scalar, Derived, OtherDerived>(derived(), other.derived());
+        }
+
         inline const ProductScalar<Derived, Scalar>
         operator*(const Scalar &scalar) const
         {

@@ -22,6 +22,9 @@ namespace Atrimx
 
     template <typename _LhsType, typename _Scalar>
     class ProductScalar;
+
+    template <typename Scalar, typename LhsType, typename RhsType>
+    class ProductMatrix;
 } // namespace Atrimx
 
 #endif
