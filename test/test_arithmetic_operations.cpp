@@ -23,6 +23,10 @@ int main()
     m_add = m1 + m2;
     Atrimx::Matrix<float, kRows, kCols> m_sub;
     m_sub = m1 - m2;
+    Atrimx::Matrix<float, kRows, kCols> m_scaled;
+    m_scaled = m1 * 3.5;
+    Atrimx::Matrix<float, kRows, kCols> m_scaled2;
+    m_scaled2 = -3.0 * m2;
 
     for (int i = 0; i < kRows; ++i)
     {
@@ -43,6 +47,20 @@ int main()
             if (diff > 1e-6)
             {
                 std::cout << "error_sub " << i << ", " << j << std::endl;
+            }
+
+            float elm_scaled = elm1 * 3.5;
+            diff = abs(m_scaled(i, j) - elm_scaled);
+            if (diff > 1e-6)
+            {
+                std::cout << "error_sub " << i << ", " << j << std::endl;
+            }
+
+            float elm_scaled2 = -3.0 * elm2;
+            diff = abs(m_scaled2(i, j) - elm_scaled2);
+            if (diff > 1e-6)
+            {
+                std::cout << "error " << i << ", " << j << std::endl;
             }
         }
     }

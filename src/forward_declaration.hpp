@@ -19,6 +19,9 @@ namespace Atrimx
 
     template <typename _Scalar, typename _LhsType, typename _RhsType>
     class Sub;
+
+    template <typename _LhsType, typename _Scalar>
+    class ProductScalar;
 } // namespace Atrimx
 
 #endif

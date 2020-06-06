@@ -31,6 +31,12 @@ namespace Atrimx
             return Sub<Scalar, Derived, OtherDerived>(derived(), other.derived());
         }
 
+        inline const ProductScalar<Derived, Scalar>
+        operator*(const Scalar &scalar) const
+        {
+            return ProductScalar<Derived, Scalar>(derived(), scalar);
+        }
+
         template <typename OtherDerived>
         Derived &operator=(const MatrixBase<OtherDerived> &other)
         {
@@ -45,6 +51,12 @@ namespace Atrimx
         }
     };
 
+    template <typename Derived>
+    inline ProductScalar<Derived, typename internal::traits<Derived>::Scalar>
+    operator*(const typename internal::traits<Derived>::Scalar &scalar, const MatrixBase<Derived> &rhs)
+    {
+        return ProductScalar<Derived, typename internal::traits<Derived>::Scalar>(rhs.derived(), scalar);
+    }
 } // namespace Atrimx
 
 #endif

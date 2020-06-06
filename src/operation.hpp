@@ -17,6 +17,12 @@ namespace Atrimx
         {
             typedef _Scalar Scalar;
         };
+
+        template <typename _LhsType, typename _Scalar>
+        struct traits<ProductScalar<_LhsType, _Scalar>>
+        {
+            typedef _Scalar Scalar;
+        };
     } // namespace internal
 
     template <typename _Scalar, typename _LhsType, typename _RhsType>
@@ -42,6 +48,18 @@ namespace Atrimx
     public:
         Sub(const _LhsType &lhs, const _RhsType &rhs) : lhs_(lhs), rhs_(rhs){};
         inline _Scalar operator()(int x, int y) const { return lhs_(x, y) - rhs_(x, y); }
+    };
+
+    template <typename _LhsType, typename _Scalar>
+    class ProductScalar : public MatrixBase<ProductScalar<_LhsType, _Scalar>>
+    {
+    private:
+        _LhsType lhs_;
+        _Scalar scalar_;
+
+    public:
+        ProductScalar(const _LhsType &lhs, const _Scalar &scalar) : lhs_(lhs), scalar_(scalar) {}
+        inline _Scalar operator()(int x, int y) const { return lhs_(x, y) * scalar_; }
     };
 
     //template <typename _Scalar, type

@@ -12,10 +12,11 @@ int main()
         }
     }
 
-    std::cout << m1.toString() << std::endl;
-    std::cout << m2.toString() << std::endl;
+    std::cout << m1 << std::endl;
+    std::cout << m2 << std::endl;
 
     Atrimx::Matrix<float, 3, 4> m3;
-    m3 = m1 + m2;
-    std::cout << m3.toString() << std::endl;
+    m3 = 3 * m1;
+
+    std::cout << m3 << std::endl;
 }
